@@ -52,11 +52,11 @@ public class SuperPerson {
     }
 
     public  String getStatus(){
-        return String.format("%s had %d health", getName(), getHealth());
+        return String.format("%s has %d health%n", getName(), getHealth());
     }
 
     public void fight(SuperPerson opponent){
-        System.out.printf("%s prepare to fight %s", getName(), opponent.getName());
+        System.out.printf("%s prepare to fight %s%n", getName(), opponent.getName());
     }
 
 
