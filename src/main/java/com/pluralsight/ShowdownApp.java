@@ -1,40 +1,41 @@
 package com.pluralsight;
 
+import java.util.Random;
+
 public class ShowdownApp {
 
     public static void main(String[] args) {
-        //*Creating a super person
-        SuperPerson superPerson = new SuperPerson();
-        //*setting the super persons attributes user the setter
-        superPerson.setName("Kimball");
-        superPerson.setHealth(100);
-        superPerson.setExperiencePoints(25);
 
-        SuperHero superHero = new SuperHero();
+        Random random = new Random();
 
-        superHero.setName("Kimball");
-        superHero.setHealth(100);
-        superHero.setExperiencePoints(25);
-
-        SuperVillain superVillain = new SuperVillain();
-
-        superVillain.setName("Evil Elman");
-        superVillain.setHealth(100);
-        superVillain.setExperiencePoints(75);
-
-        //How are the super people feeling
-        System.out.println(superHero.getStatus());
-        System.out.println(superVillain.getStatus());
-
-        //The showdown starts
-        superHero.fight(superVillain);
-        superVillain.takeDamage(15);
-        superHero.takeDamage(35);
+        SuperHero hero = new SuperHero("Logan", 100, 100);
+        SuperVillain villain = new SuperVillain("Messi", 100, 150);
+        hero.fight(villain);
+        boolean fighting = true;
+        while (fighting) {
+            System.out.println(hero.getStatus());
+            System.out.println(villain.getStatus());
 
 
-        //How are the super people feeling
-        System.out.println(superHero.getStatus());
-        System.out.println(superVillain.getStatus());
+            villain.takeDamage(random.nextInt(101));
+            hero.takeDamage(random.nextInt(101));
+
+            System.out.println(hero.getStatus());
+            System.out.println(villain.getStatus());
+
+            if (!villain.isAlive()|| !hero.isAlive()) {
+                fighting = false;
+                if (villain.isAlive()){
+                    System.out.println(villain.getName() + " Winner");
+                }
+                else if (hero.isAlive()){
+                    System.out.println(hero.getName() + " Winner");
+                }
+            }
+
+
+        }
+
 
     }
 
